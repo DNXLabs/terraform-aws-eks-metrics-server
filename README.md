@@ -4,7 +4,14 @@
 [![LICENSE](https://img.shields.io/github/license/DNXLabs/terraform-aws-eks-metrics-server)](https://github.com/DNXLabs/terraform-aws-eks-metrics-server/blob/master/LICENSE)
 
 
-Terraform module for deploying kubernetes [metrics-server](https://github.com/kubernetes-sigs/metrics-server), enabling K8S to colects CPU and Memory metrics from cluster and use HPA on applications.
+Terraform module for deploying Kubernetes [Metrics Server](https://github.com/kubernetes-sigs/metrics-server), Metrics Server collects resource metrics from Kubelets and exposes them in Kubernetes apiserver through [Metrics API](https://github.com/kubernetes/metrics) for use by [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) and [Vertical Pod Autoscaler](https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler). Metrics API can also be accessed by `kubectl top`, making it easier to debug autoscaling pipelines.
+
+
+Metrics Server offers:
+
+- A single deployment that works on most clusters (see [Requirements](https://github.com/kubernetes-sigs/metrics-server#requirements))
+- Scalable support up to 5,000 node clusters
+- Resource efficiency: Metrics Server uses 1m core of CPU and 3 MB of memory per node
 
 ## Usage
 
@@ -13,11 +20,6 @@ module "external_secrets" {
   source = "git::https://github.com/DNXLabs/terraform-aws-eks-metrics-server.git"
 
   enabled = true
-
-  cluster_name                     = module.eks_cluster.cluster_id
-  cluster_identity_oidc_issuer     = module.eks_cluster.cluster_oidc_issuer_url
-  cluster_identity_oidc_issuer_arn = module.eks_cluster.oidc_provider_arn
-  secrets_aws_region               = data.aws_region.current.name
 }
 ```
 
