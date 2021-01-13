@@ -16,7 +16,7 @@ Metrics Server offers:
 ## Usage
 
 ```
-module "external_secrets" {
+module "metrics_server" {
   source = "git::https://github.com/DNXLabs/terraform-aws-eks-metrics-server.git"
 
   enabled = true
