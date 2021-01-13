@@ -7,14 +7,13 @@ resource "helm_release" "metrics_server" {
   version    = var.helm_chart_version
   namespace  = var.namespace
 
-  set {
-    name  = "clusterName"
-    value = var.cluster_name
-  }
+  dynamic "set" {
+    for_each = var.settings
 
-  # set {
-  #   name  = "serviceAccount.name"
-  #   value = var.service_account_name
-  # }
+    content {
+      name  = set.key
+      value = set.value
+    }
+  }
 
 }

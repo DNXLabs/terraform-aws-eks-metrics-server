@@ -4,22 +4,6 @@ variable "enabled" {
   description = "Variable indicating whether deployment is enabled."
 }
 
-variable "cluster_name" {
-  type        = string
-  description = "The name of the cluster."
-}
-
-
-variable "cluster_identity_oidc_issuer" {
-  type        = string
-  description = "The OIDC Identity issuer for the cluster."
-}
-
-variable "cluster_identity_oidc_issuer_arn" {
-  type        = string
-  description = "The OIDC Identity issuer ARN for the cluster that can be used to associate IAM roles with a service account."
-}
-
 variable "helm_chart_name" {
   type        = string
   default     = "metrics-server"
@@ -56,18 +40,13 @@ variable "namespace" {
   description = "Kubernetes namespace to deploy Metrics Server Helm chart."
 }
 
-# variable "service_account_name" {
-#   type        = string
-#   default     = "metrics_service"
-#   description = "Metrics Server service account name."
-# }
-
 variable "mod_dependency" {
   default     = null
   description = "Dependence variable binds all AWS resources allocated by this module, dependent modules reference this variable."
 }
 
-variable "worker_iam_role_name" {
-  type        = string
-  description = "IAM role name for EKS worker groups."
+variable "settings" {
+  type        = map(any)
+  default     = {}
+  description = "Additional settings which will be passed to the Helm chart values."
 }
