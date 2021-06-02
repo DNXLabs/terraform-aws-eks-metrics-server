@@ -53,7 +53,7 @@ module "metrics_server" {
 | helm\_chart\_version | Metrics Server Helm chart version. | `string` | `"2.11.2"` | no |
 | mod\_dependency | Dependence variable binds all AWS resources allocated by this module, dependent modules reference this variable. | `any` | `null` | no |
 | namespace | Kubernetes namespace to deploy Metrics Server Helm chart. | `string` | `"kube-system"` | no |
-| settings | Additional settings which will be passed to the Helm chart values. | `map(any)` | `{}` | no |
+| settings | Additional settings which will be passed to the Helm chart values. | `map` | `{}` | no |
 
 ## Outputs
 
