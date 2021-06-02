@@ -7,13 +7,8 @@ resource "helm_release" "metrics_server" {
   version    = var.helm_chart_version
   namespace  = var.namespace
 
-  dynamic "set" {
-    for_each = var.settings
-
-    content {
-      name  = set.key
-      value = set.value
-    }
-  }
+  values = [
+    yamlencode(var.settings)
+  ]
 
 }
