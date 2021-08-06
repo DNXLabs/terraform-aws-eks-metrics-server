@@ -18,13 +18,13 @@ variable "helm_chart_release_name" {
 
 variable "helm_chart_version" {
   type        = string
-  default     = "2.11.2"
+  default     = "5.9.2"
   description = "Metrics Server Helm chart version."
 }
 
 variable "helm_chart_repo" {
   type        = string
-  default     = "https://charts.helm.sh/stable/"
+  default     = "https://charts.bitnami.com/bitnami"
   description = "Metrics Server repository name."
 }
 
