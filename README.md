@@ -49,8 +49,8 @@ module "metrics_server" {
 | enabled | Variable indicating whether deployment is enabled. | `bool` | `true` | no |
 | helm\_chart\_name | Metrics Server Helm chart name to be installed | `string` | `"metrics-server"` | no |
 | helm\_chart\_release\_name | Helm release name | `string` | `"metrics-server"` | no |
-| helm\_chart\_repo | Metrics Server repository name. | `string` | `"https://charts.helm.sh/stable/"` | no |
-| helm\_chart\_version | Metrics Server Helm chart version. | `string` | `"2.11.2"` | no |
+| helm\_chart\_repo | Metrics Server repository name. | `string` | `"https://charts.bitnami.com/bitnami"` | no |
+| helm\_chart\_version | Metrics Server Helm chart version. | `string` | `"5.9.2"` | no |
 | mod\_dependency | Dependence variable binds all AWS resources allocated by this module, dependent modules reference this variable. | `any` | `null` | no |
 | namespace | Kubernetes namespace to deploy Metrics Server Helm chart. | `string` | `"kube-system"` | no |
 | settings | Additional settings which will be passed to the Helm chart values. | `map` | `{}` | no |
