@@ -41,11 +41,13 @@ variable "namespace" {
 }
 
 variable "mod_dependency" {
+  type        = any
   default     = null
   description = "Dependence variable binds all AWS resources allocated by this module, dependent modules reference this variable."
 }
 
 variable "settings" {
+  type        = map
   default     = {}
   description = "Additional settings which will be passed to the Helm chart values."
 }
